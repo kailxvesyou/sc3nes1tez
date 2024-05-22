@@ -1,1 +1,13 @@
-
+services:
+- type: web
+  name: build
+  runtime: go
+  rootDir: frontend
+  buildCommand: go build -o app .
+  startCommand: ./app
+- type: web
+  name: app-community
+  runtime: docker
+  rootDir: community/docker
+  dockerfilePath: ./Dockerfile
+  dockerContext: .
